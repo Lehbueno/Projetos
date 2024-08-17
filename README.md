@@ -16,9 +16,8 @@ Verifica o primeiro resultado da busca, a avaliação e o valor.
 
 ## Tecnologias utilizadas
 - Phyton
-- Js.
 - Selenium
-- Postman
+- VSCode
 
 
 ## Como executar o projeto
@@ -33,6 +32,8 @@ instalar as dependencias
 pip install python
 pip install selenium
 pip install webdriver-manager
+pip install requests faker pydantic pytest
+
 
 executar o projeto
 
