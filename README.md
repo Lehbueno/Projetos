@@ -6,6 +6,7 @@ buscacorreio.py
 Faz uma busca por CEP no site dos correios, e uma busca pelo valor: Lojas Bemol.
 
 
+
 trivago.py
 
 Faz uma busca pelo destino "Manaus", filtra os resultados por "Avaliação e sugestões"
