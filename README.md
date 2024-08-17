@@ -1,5 +1,12 @@
-# Sobre o projeto
+# Sobre os projetos
 
+buscacorreio.py 
+Faz uma busca por CEP no site dos correios, e uma busca pelo valor: Lojas Bemol.
+
+
+trivago.py
+Faz uma busca pelo destino "Manaus", filtra os resultados por "Avaliação e sugestões"
+Verifica o primeiro resultado da busca, a avaliação e o valor.
 
 
 ## Tecnologias utilizadas
@@ -11,7 +18,6 @@
 
 ## Como executar o projeto
 
-```bash
 clonar o repositório
 git clone
 
