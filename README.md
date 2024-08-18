@@ -14,6 +14,16 @@ Faz uma busca pelo destino "Manaus", filtra os resultados por "Avaliação e sug
 Verifica o primeiro resultado da busca, a avaliação e o valor.
 
 
+User_test.py
+
+Cria um usuário, faz um request para essa criação e valido se ele foi criado com sucesso.
+
+
+Product_test.py
+
+Faz um login para gerar o token de autenticação, insere o token no request para conseguir criar um produto, crio um produto e valido se foi criado com sucesso.
+
+
 ## Tecnologias utilizadas
 - Phyton
 - Selenium
