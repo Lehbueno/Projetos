@@ -1,25 +1,25 @@
 # Sobre os projetos
 
 
-buscacorreio.py 
+_buscacorreio.py_
 
 Faz uma busca por CEP no site dos correios, e uma busca pelo valor: Lojas Bemol.
 
 
 
-trivago.py
+_trivago.py_
 
 Faz uma busca pelo destino "Manaus", filtra os resultados por "Avaliação e sugestões"
 
 Verifica o primeiro resultado da busca, a avaliação e o valor.
 
 
-User_test.py
+_User_test.py_
 
 Cria um usuário, faz um request para essa criação e valido se ele foi criado com sucesso.
 
 
-Product_test.py
+_Product_test.py_
 
 Faz um login para gerar o token de autenticação, insere o token no request para conseguir criar um produto, crio um produto e valido se foi criado com sucesso.
 
