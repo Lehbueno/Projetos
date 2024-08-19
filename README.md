@@ -26,8 +26,10 @@ Faz um login para gerar o token de autenticação, insere o token no request par
 
 ## Tecnologias utilizadas
 - Phyton
+- JS
 - Selenium
 - VSCode
+- Postman
 
 
 ## Como executar o projeto
