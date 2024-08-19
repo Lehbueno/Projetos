@@ -37,8 +37,7 @@ Faz um login para gerar o token de autenticação, insere o token no request par
 clonar o repositório
 git clone
 
-entrar na pasta do projeto Selenium+python
-cd selenium+python
+entrar na pasta do projeto
 
 instalar as dependencias
 pip install python
