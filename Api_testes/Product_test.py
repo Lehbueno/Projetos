@@ -1,10 +1,9 @@
-import httpx
-from faker import Faker
-from pydantic import BaseModel
-import pytest
-from typing import Optional
+import httpx from faker
+import Faker from pydantic
+import BaseModel
+import pytest from typing
+import Optional from pylance
 
-# Model definitions
 class Product(BaseModel):
     nome: str
     preco: int
