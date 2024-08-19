@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "25159d69-d5e8-4652-bf8e-2c5dc3b5c529",
+		"name": "Serverest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36720652"
+	},
+	"item": [
+		{
+			"name": "Cadastro de usuário",
+			"item": [
+				{
+					"name": "Novo cadastro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Karol\",\r\n  \"email\": \"testando45@gmail.com.br\",\r\n  \"password\": \"test\",\r\n  \"administrador\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar usuário por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json'",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json'",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/VzZ4fiP7exUywDRF",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"VzZ4fiP7exUywDRF"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login com sucesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Cadastrar produto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const postRequest = {\r",
+									"    url: pm.environment.get(\"baseUrl\") + \"/login\",\r",
+									"    method: \"POST\",\r",
+									"    body: {\r",
+									"        mode: \"raw\",\r",
+									"        options: {\r",
+									"            raw: {\r",
+									"                language: \"json\"\r",
+									"            }\r",
+									"        },\r",
+									"         raw: JSON.stringify({\r",
+									"            email: \"fulano@qa.com\",\r",
+									"            password: \"teste\"\r",
+									"        })\r",
+									"     }\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest(postRequest, function (err, res) {\r",
+									"    let responseJson = res.json()\r",
+									"    let auth = responseJson[\"authorization\"].split(\" \")\r",
+									"    console.log(auth[1])\r",
+									"    pm.globals.set(\"token\", auth[1])\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Xiaomi redmi 13 Pro\",\r\n  \"preco\": 1900,\r\n  \"descricao\": \"Celular\",\r\n  \"quantidade\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar produtos cadastrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json'",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "preco",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "descricao",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "quantidade",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar pro. cadastrados por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json'",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/produtos/IS8a6LHFHmL4ZWHD",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos",
+								"IS8a6LHFHmL4ZWHD"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "preco",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "descricao",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "quantidade",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "Listar usuários cadastrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json'",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": null,
+									"description": "string",
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": null,
+									"description": "string",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": null,
+									"description": "string",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": null,
+									"description": "string",
+									"disabled": true
+								},
+								{
+									"key": "adminstrador",
+									"value": null,
+									"description": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
