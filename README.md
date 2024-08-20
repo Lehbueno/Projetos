@@ -14,14 +14,23 @@ Faz uma busca pelo destino "Manaus", filtra os resultados por "Avaliação e sug
 Verifica o primeiro resultado da busca, a avaliação e o valor.
 
 
+
 _User_test.py_
 
 Cria um usuário, faz um request para essa criação e valido se ele foi criado com sucesso.
 
 
+
 _Product_test.py_
 
 Faz um login para gerar o token de autenticação, insere o token no request para conseguir criar um produto, crio um produto e valido se foi criado com sucesso.
+
+
+
+_Serverest.postman_collection.json_
+
+Essa é colletion do postman, ela cria um usuário valida a criação dele e retorna o ID, faz login para pegar o token, insere o token no request de criação de um produto e valida se o produto foi criado retornando uma lista de produtos cadastrados.
+
 
 
 ## Tecnologias utilizadas
