@@ -29,7 +29,7 @@ Faz um login para gerar o token de autenticação, insere o token no request par
 
 _Serverest.postman_collection.json_
 
-Essa é colletion do postman, ela cria um usuário valida a criação dele e retorna o ID, faz login para pegar o token, insere o token no request de criação de um produto e valida se o produto foi criado retornando uma lista de produtos cadastrados.
+Essa é collection do postman, ela cria um usuário valida a criação dele e retorna o ID, faz login para pegar o token, insere o token no request de criação de um produto e valida se o produto foi criado retornando uma lista de produtos cadastrados.
 
 
 
